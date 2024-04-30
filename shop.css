@@ -1,0 +1,13 @@
+.cart-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.item{
+    width: 20%;
+}
+
+.delete img{
+    width: 25px;
+}
