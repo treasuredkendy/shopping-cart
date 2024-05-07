@@ -30,6 +30,8 @@ function createItem(product){
     let delBtn = document.createElement("button")
     delBtn.setAttribute("class","delete")
     let deleteIcon = document.createElement("img")
+deleteIcon.setAttribute("data-id",product.id);
+    delBtn.setAttribute("data-id",product.id);
     deleteIcon.setAttribute("src","delete.png")
     deleteIcon.setAttribute("alt","delete icon")
     delBtn.appendChild(deleteIcon)
@@ -41,9 +43,17 @@ for(let i=0;i<products.length;i++){
     createItem(products[i])
 }
 
-document.querySelectorAll(".delete").forEach(btn=>{
-    btn.addEventListener("click",(e)=>{
-        
-        e.target.parentElement.remove()
-    })
-})
+function renderproducts(products){
+    for(let i=0;i<products.length;i++){
+        createItem(products[i])}
+}
+
+
+document.querySelectorAll(".delete").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      let product_id = e.target.dataset.id;
+      const filteredProducts = products.filter((p) => p.id != product_id); // Create a new filtered array
+      renderproducts(filteredProducts); // Pass the filtered array to renderproducts
+    });
+  })
+  
